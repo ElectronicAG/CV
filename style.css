@@ -1,0 +1,18 @@
+*{
+    background-color: black;
+    color: white;
+}
+.Title{
+    color: aquamarine;
+    text-align: center;
+}
+#Link{
+    color: red;
+}
+
+p[value = "1"]{
+    color: orange;
+}
+.me{
+    text-align: right;
+}
