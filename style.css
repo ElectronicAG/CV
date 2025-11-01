@@ -1,3 +1,16 @@
+html{
+    background-color: white;
+    color: black;
+}
+
+body {
+    font-size: 0px; /* elimina el espacio entre inline-blocks */
+}
+
+*{
+    font-size: 16px;
+}
+
 
 .open-sans {
   font-family: "Open Sans", sans-serif;
@@ -17,27 +30,21 @@ h3 {
     text-align: left;
 }
 
-html{
-    background-color: white;
-    color: black;
-}
-
 .title{
     display: block;
     width: 80%;
 }
 .colums{
-    color: blue;
+    color: black;
+    display: inline-table;
+    height: 50%;
+    margin: 1%;
+    width: 38%;  
 }
 
 div{
     position: relative;
     left: 10%;
-    display: inline-block;
-    margin-left: 2%;
-    margin-right: 2%;
-
-    width: 36%;
-    border: 1px solid black;
+    float: left;
 }
 
