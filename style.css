@@ -24,18 +24,20 @@ html{
 
 .title{
     display: block;
-    height: 50%;
-    width: 81%;
+    width: 80%;
 }
 .colums{
-    display: inline-block;
-    margin: 1%;
-    height: 50%;
-    width: 25%;
+    color: blue;
 }
 
 div{
     position: relative;
     left: 10%;
+    display: inline-block;
+    margin-left: 2%;
+    margin-right: 2%;
 
+    width: 36%;
+    border: 1px solid black;
 }
+
