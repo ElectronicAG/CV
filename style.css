@@ -1,18 +1,41 @@
-*{
-    background-color: black;
-    color: white;
+
+.open-sans {
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
-.Title{
-    color: aquamarine;
-    text-align: center;
+h1 {
+    font-size: xx-large;
+    text-align: left;
 }
-#Link{
-    color: red;
+h2 {
+    font-size: large;
+    text-align: left;
+}
+h3 {
+    font-size: x-large;
+    text-align: left;
 }
 
-p[value = "1"]{
-    color: orange;
+html{
+    background-color: white;
+    color: black;
 }
-.me{
-    text-align: right;
+
+.title{
+    display: block;
+    height: 50%;
+    width: 81%;
+}
+.colums{
+    display: inline-block;
+    margin: 1%;
+    height: 50%;
+    width: 25%;
+}
+
+div{
+    position: relative;
+    left: 10%;
+
 }
