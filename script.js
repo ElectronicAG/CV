@@ -105,7 +105,15 @@ async function initCollage(container){
     item.className = "collage-item";
     img.alt = `${folder.replace(/[./]/g, "")} — foto ${i + 1}`;
     img.loading = "lazy";
-    item.appendChild(img);
+
+    const link = document.createElement("a");
+    link.href = img.src;
+    link.target = "_blank";
+    link.rel = "noopener";
+    link.setAttribute("aria-label", `Ver foto ${i + 1} en tamaño completo`);
+    link.appendChild(img);
+
+    item.appendChild(link);
     container.appendChild(item);
   });
 
