@@ -1,60 +1,357 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="style.css">
-    <meta charset="UTF-8">
-
-    <title>CV</title>
-
-</head> 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alan — VLSI / Nanoelectronics Engineer</title>
+<link rel="stylesheet" href="style.css">
+<script>
+  /* aplica el tema guardado antes de pintar, para evitar parpadeo */
+  (function(){
+    var saved = localStorage.getItem("theme");
+    var theme = saved || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+    document.documentElement.setAttribute("data-theme", theme);
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
 <body>
-    <div class="title">
-        <h1>Alan Samuel Gomez Paz</h1>
-        <h2>Universidad del Valle de Guatemala (UVG), Guatemala City</h2>
-        <p><a href="gomezpazalansamuel@gmail.com "> Gmail </a> &nbsp;
-        <a href="https://www.linkedin.com/in/alan-samuel-gomez-paz-572118325/">Linkedin</a> &nbsp;
-        <a href="https://github.com/ElectronicAG">GitHub</a></p>
-        <p>Zone 16, Guatemala - Guatemala</p>
-        <hr>
-    </div>
-    
-    <div class="colums">
-        <h3>EXPERIENCE</h3>
-        <hr>  
-    </div>
 
-    <div class="colums">
-        <h3>HOBBIES</h3>
-        <hr>
-    </div>
+<!-- fondo de rejilla tipo "die grid" -->
+<div class="die-grid" aria-hidden="true"></div>
 
-    <div class="colums">
-        <h3>ACHIEVEMENTS</h3>
-        <hr>
-    </div>
+<div class="pkg">
 
-    <div class="colums">
-        <h3>EDUCATION</h3>
-        <hr>
-    </div> 
-
-    <div class="colums">
-        <h3>TECHNICAL SKILLS</h3>
-        <hr>
+  <!-- ============ NAV — estilo "pinout" de datasheet ============ -->
+  <nav class="pinstrip" aria-label="Navegación principal">
+    <div class="pin-brand">
+      <span class="pin-brand__mark">◧</span>
+      <span class="pin-brand__text">ALAN<span class="pin-brand__dim">.CHIP</span></span>
     </div>
+    <button class="pin" data-target="home" data-num="P1" aria-current="page">
+      <span class="pin__num">P1</span><span class="pin__label">HOME</span>
+    </button>
+    <button class="pin" data-target="redes" data-num="P2">
+      <span class="pin__num">P2</span><span class="pin__label">REDES</span>
+    </button>
+    <button class="pin" data-target="portafolio" data-num="P3">
+      <span class="pin__num">P3</span><span class="pin__label">PORTAFOLIO</span>
+    </button>
 
-    <div class="colums">
-        <h3>PROJECTS</h3>
-        <hr>
-    </div>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Cambiar a modo light">
+      <svg class="theme-toggle__icon theme-toggle__icon--moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+      <svg class="theme-toggle__icon theme-toggle__icon--sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+      </svg>
+    </button>
+  </nav>
 
-    <div class="colums">
-        <h3>PERSONAL SKILLS</h3>
-        <hr>
-    </div>
+  <!-- ============ HOME ============ -->
+  <main id="home" class="view view--active">
+
+    <section class="hero">
+      <div class="hero__text">
+        <p class="eyebrow">// die_id: ALAN-01 · node: 65nm–∞</p>
+        <h1 class="hero__title">Alan <span class="hero__title-muted">[Tu Apellido]</span></h1>
+        <p class="hero__role">Ingeniero en Electrónica — VLSI &amp; Nanoelectrónica</p>
+        <p class="hero__blurb">
+          Enfocado en verificación física de circuitos integrados (DRC · LVS · ERC · ARC),
+          floorplanning y clock tree synthesis. Trabajo de graduación sobre
+          <em>El Gran Jaguar</em>, el primer nanochip diseñado en Guatemala (TSMC 65nm).
+        </p>
+        <a class="btn btn--primary" href="./CV.pdf" download>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/>
+          </svg>
+          Descargar CV (PDF)
+        </a>
+      </div>
+
+      <div class="hero__die" aria-hidden="true">
+        <svg viewBox="0 0 320 320" class="die-svg">
+          <rect x="60" y="60" width="200" height="200" rx="4" class="die-core"/>
+          <rect x="90" y="90" width="140" height="140" rx="2" class="die-block" style="animation-delay:.1s"/>
+          <rect x="115" y="115" width="90" height="90" rx="2" class="die-block" style="animation-delay:.25s"/>
+          <rect x="140" y="140" width="40" height="40" rx="1" class="die-block die-block--core" style="animation-delay:.4s"/>
+          <!-- pines -->
+          <g class="die-pins">
+            <line x1="60" y1="80" x2="10" y2="80"/><line x1="60" y1="110" x2="10" y2="110"/>
+            <line x1="60" y1="140" x2="10" y2="140"/><line x1="60" y1="170" x2="10" y2="170"/>
+            <line x1="60" y1="200" x2="10" y2="200"/><line x1="60" y1="230" x2="10" y2="230"/>
+            <line x1="260" y1="80" x2="310" y2="80"/><line x1="260" y1="110" x2="310" y2="110"/>
+            <line x1="260" y1="140" x2="310" y2="140"/><line x1="260" y1="170" x2="310" y2="170"/>
+            <line x1="260" y1="200" x2="310" y2="200"/><line x1="260" y1="230" x2="310" y2="230"/>
+            <line x1="80" y1="60" x2="80" y2="10"/><line x1="110" y1="60" x2="110" y2="10"/>
+            <line x1="140" y1="60" x2="140" y2="10"/><line x1="170" y1="60" x2="170" y2="10"/>
+            <line x1="200" y1="60" x2="200" y2="10"/><line x1="230" y1="60" x2="230" y2="10"/>
+            <line x1="80" y1="260" x2="80" y2="310"/><line x1="110" y1="260" x2="110" y2="310"/>
+            <line x1="140" y1="260" x2="140" y2="310"/><line x1="170" y1="260" x2="170" y2="310"/>
+            <line x1="200" y1="260" x2="200" y2="310"/><line x1="230" y1="260" x2="230" y2="310"/>
+          </g>
+          <circle cx="72" cy="72" r="3" class="die-marker"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="block">
+      <h2 class="block__title"><span class="tag">01</span> Experience</h2>
+      <div class="block__body">
+
+        <article class="entry">
+          <div class="entry__when">
+            <span class="mono">2025 — presente</span>
+          </div>
+          <div class="entry__what">
+            <h3>Trabajo de Graduación — Verificación Física de "El Gran Jaguar"</h3>
+            <p class="entry__org">Universidad del Valle de Guatemala · Facultad de Ingeniería</p>
+            <p>
+              Documentación de un manual replicable para procesos de validación DRC, LVS, ERC
+              y ARC usando Synopsys IC Validator e IC Compiler II, sobre el primer nanochip
+              diseñado en Guatemala (tecnología TSMC 65nm). Resolución de correcciones ECO
+              posteriores al tape-out.
+            </p>
+          </div>
+        </article>
+
+        <article class="entry">
+          <div class="entry__when"><span class="mono">2026</span></div>
+          <div class="entry__what">
+            <h3>Proyecto — Sistema de Entrada Inteligente</h3>
+            <p class="entry__org">IEEE SSCS Arduino Contest 2026</p>
+            <p>
+              Diseño e implementación de un sistema de seguridad de entrada sobre ESP32
+              (FreeRTOS), integrando sensores ultrasónico, IMU, temperatura/humedad y presión
+              barométrica, con clasificación de eventos vía API externa de IA.
+            </p>
+          </div>
+        </article>
+
+        <article class="entry entry--placeholder">
+          <div class="entry__when"><span class="mono">[Año — Año]</span></div>
+          <div class="entry__what">
+            <h3>[Puesto / Rol]</h3>
+            <p class="entry__org">[Empresa / Organización]</p>
+            <p>[Descripción breve de tus responsabilidades y logros. Reemplaza este bloque.]</p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- TECHNICAL SKILLS -->
+    <section class="block">
+      <h2 class="block__title"><span class="tag">02</span> Technical Skills</h2>
+      <div class="block__body">
+        <div class="skill-grid">
+          <div class="skill-group">
+            <h3 class="skill-group__title">Diseño VLSI</h3>
+            <ul class="chip-list">
+              <li>Synopsys IC Validator</li>
+              <li>Synopsys IC Compiler II</li>
+              <li>Placement &amp; Routing</li>
+              <li>Clock Tree Synthesis</li>
+              <li>Power Planning</li>
+              <li>DRC / LVS / ERC / ARC</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h3 class="skill-group__title">Embebidos</h3>
+            <ul class="chip-list">
+              <li>ESP32 / FreeRTOS</li>
+              <li>Arduino / STM32</li>
+              <li>C / Ensamblador</li>
+              <li>KiCad</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h3 class="skill-group__title">Software &amp; Herramientas</h3>
+            <ul class="chip-list">
+              <li>LaTeX</li>
+              <li>Git / GitHub</li>
+              <li>[Otro software]</li>
+            </ul>
+          </div>
+          <div class="skill-group skill-group--placeholder">
+            <h3 class="skill-group__title">[Categoría]</h3>
+            <ul class="chip-list">
+              <li>[Habilidad]</li>
+              <li>[Habilidad]</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PERSONAL SKILLS -->
+    <section class="block">
+      <h2 class="block__title"><span class="tag">03</span> Personal Skills</h2>
+      <div class="block__body">
+        <ul class="chip-list chip-list--pills">
+          <li>[Trabajo en equipo]</li>
+          <li>[Resolución de problemas]</li>
+          <li>[Comunicación técnica]</li>
+          <li>[Aprendizaje autodidacta]</li>
+          <li>[Otra habilidad]</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- HOBBIES -->
+    <section class="block">
+      <h2 class="block__title"><span class="tag">04</span> Hobbies</h2>
+      <div class="block__body">
+        <ul class="chip-list chip-list--pills">
+          <li>[Hobby 1]</li>
+          <li>[Hobby 2]</li>
+          <li>[Hobby 3]</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="block">
+      <h2 class="block__title"><span class="tag">05</span> Education</h2>
+      <div class="block__body">
+        <article class="entry">
+          <div class="entry__when"><span class="mono">[Año] — presente</span></div>
+          <div class="entry__what">
+            <h3>Ingeniería [Electrónica / especialidad exacta]</h3>
+            <p class="entry__org">Universidad del Valle de Guatemala (UVG) — Facultad de Ingeniería</p>
+            <p>Enfoque en diseño VLSI, simulación de nanoelectrónica y sistemas embebidos.</p>
+          </div>
+        </article>
+        <article class="entry entry--placeholder">
+          <div class="entry__when"><span class="mono">[Año — Año]</span></div>
+          <div class="entry__what">
+            <h3>[Diplomado / Curso / Certificación]</h3>
+            <p class="entry__org">[Institución]</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ REDES ============ -->
+  <main id="redes" class="view">
+    <section class="hero hero--compact">
+      <p class="eyebrow">// pinout: contacto</p>
+      <h1 class="hero__title">Redes</h1>
+      <p class="hero__blurb">Encuéntrame en estos canales.</p>
+    </section>
+
+    <section class="block">
+      <div class="link-grid">
+        <a class="link-card" href="mailto:tucorreo@gmail.com">
+          <span class="link-card__num mono">P1</span>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>
+          </svg>
+          <span class="link-card__label">Gmail</span>
+          <span class="link-card__sub mono">tucorreo@gmail.com</span>
+        </a>
+
+        <a class="link-card" href="https://www.linkedin.com/in/tu-usuario" target="_blank" rel="noopener">
+          <span class="link-card__num mono">P2</span>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <line x1="7" y1="10" x2="7" y2="17"/><circle cx="7" cy="7" r="1"/>
+            <path d="M11 17v-4a2 2 0 0 1 4 0v4M11 10v7"/>
+          </svg>
+          <span class="link-card__label">LinkedIn</span>
+          <span class="link-card__sub mono">/in/tu-usuario</span>
+        </a>
+
+        <a class="link-card" href="https://github.com/tu-usuario" target="_blank" rel="noopener">
+          <span class="link-card__num mono">P3</span>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.93.84.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/>
+          </svg>
+          <span class="link-card__label">GitHub</span>
+          <span class="link-card__sub mono">@tu-usuario</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ PORTAFOLIO ============ -->
+  <main id="portafolio" class="view">
+    <section class="hero hero--compact">
+      <p class="eyebrow">// tapeout log</p>
+      <h1 class="hero__title">Portafolio</h1>
+      <p class="hero__blurb">Proyectos seleccionados, de silicio a firmware.</p>
+    </section>
+
+    <section class="block">
+      <article class="project">
+        <div class="project__collage">
+          <div class="collage-cell collage-cell--a"><span class="collage-cell__hint">foto-proyecto1-1.jpg</span></div>
+          <div class="collage-cell collage-cell--b"><span class="collage-cell__hint">foto-proyecto1-2.jpg</span></div>
+          <div class="collage-cell collage-cell--c"><span class="collage-cell__hint">foto-proyecto1-3.jpg</span></div>
+        </div>
+        <div class="project__text">
+          <p class="eyebrow">Proyecto 1 · TSMC 65nm</p>
+          <h3>El Gran Jaguar — Verificación Física</h3>
+          <p>
+            Trabajo de graduación enfocado en la verificación física del primer nanochip
+            diseñado en Guatemala. Desarrollo de un manual replicable de validación
+            (DRC, LVS, ERC, ARC) usando Synopsys IC Validator e IC Compiler II, y resolución
+            de correcciones ECO tras el tape-out.
+          </p>
+          <ul class="chip-list">
+            <li>IC Validator</li><li>IC Compiler II</li><li>TSMC 65nm</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="project project--reverse">
+        <div class="project__collage">
+          <div class="collage-cell collage-cell--a"><span class="collage-cell__hint">foto-proyecto2-1.jpg</span></div>
+          <div class="collage-cell collage-cell--b"><span class="collage-cell__hint">foto-proyecto2-2.jpg</span></div>
+          <div class="collage-cell collage-cell--c"><span class="collage-cell__hint">foto-proyecto2-3.jpg</span></div>
+        </div>
+        <div class="project__text">
+          <p class="eyebrow">Proyecto 2 · IEEE SSCS 2026</p>
+          <h3>Guardián de Entrada — Sistema de Seguridad Inteligente</h3>
+          <p>
+            Sistema de detección y alerta para entradas, construido sobre ESP32 con FreeRTOS.
+            Combina sensor ultrasónico, IMU, sensores de temperatura/humedad y presión
+            barométrica, con clasificación de eventos mediante una API externa de IA.
+          </p>
+          <ul class="chip-list">
+            <li>ESP32</li><li>FreeRTOS</li><li>KiCad</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="project project--placeholder">
+        <div class="project__collage">
+          <div class="collage-cell collage-cell--a"><span class="collage-cell__hint">foto-proyecto3-1.jpg</span></div>
+          <div class="collage-cell collage-cell--b"><span class="collage-cell__hint">foto-proyecto3-2.jpg</span></div>
+          <div class="collage-cell collage-cell--c"><span class="collage-cell__hint">foto-proyecto3-3.jpg</span></div>
+        </div>
+        <div class="project__text">
+          <p class="eyebrow">Proyecto 3</p>
+          <h3>[Nombre del proyecto]</h3>
+          <p>[Descripción del proyecto. Reemplaza este bloque con tu contenido.]</p>
+          <ul class="chip-list"><li>[Tech]</li><li>[Tech]</li></ul>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="mono">© <span id="year"></span> Alan · built on silicon &amp; caffeine</p>
+  </footer>
+
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
