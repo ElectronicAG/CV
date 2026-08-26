@@ -12,43 +12,47 @@
 
 /* ---------- modo dark (por defecto) ---------- */
 :root,
-[data-theme="dark"]{
-  --bg:        #000000;
-  --bg-panel:  rgba(82,5,123,.16);    /* 52057B a baja opacidad sobre negro */
-  --bg-panel-2:rgba(82,5,123,.28);
-  --line:      rgba(137,44,220,.35);  /* 892CDC */
-  --line-soft: rgba(137,44,220,.18);
+[data-theme="dark"] {
+  --bg:         #222831;
 
-  --fg:        #bc6ff1;               /* BC6FF1 */
-  --fg-dim:    rgba(188,111,241,.68);
-  --fg-faint:  rgba(188,111,241,.4);
+  --bg-panel:   rgba(49, 54, 63, 0.65);
+  --bg-panel-2: #31363f;
 
-  --copper:      #892cdc;             /* acento primario */
-  --copper-soft: rgba(137,44,220,.18);
-  --gold:        #bc6ff1;             /* highlight secundario */
-  --signal:      #892cdc;
+  --line:       rgba(118, 171, 174, 0.40);
+  --line-soft:  rgba(118, 171, 174, 0.20);
 
-  --btn-fg: #000000;
+  --fg:         #eeeeee;
+  --fg-dim:     rgba(238, 238, 238, 0.70);
+  --fg-faint:   rgba(238, 238, 238, 0.42);
+
+  --copper:      #76abae;
+  --copper-soft: rgba(118, 171, 174, 0.18);
+  --gold:        #eeeeee;
+  --signal:      #76abae;
+
+  --btn-fg: #222831;
 }
 
 /* ---------- modo light ---------- */
-[data-theme="light"]{
-  --bg:        #eaeaea;
-  --bg-panel:  #ffffff;
-  --bg-panel-2:#f2f2f2;
-  --line:      rgba(37,42,52,.16);
-  --line-soft: rgba(37,42,52,.08);
+[data-theme="light"] {
+  --bg:         #eaecf0;
+  --bg-panel:   #ffffff;
+  --bg-panel-2: rgba(35, 61, 77, 0.07);
 
-  --fg:        #252a34;
-  --fg-dim:    rgba(37,42,52,.7);
-  --fg-faint:  rgba(37,42,52,.45);
+  --line:       rgba(35, 61, 77, 0.22);
+  --line-soft:  rgba(35, 61, 77, 0.10);
 
-  --copper:      #ff2e63;             /* acento primario */
-  --copper-soft: rgba(255,46,99,.12);
-  --gold:        #08d9d6;             /* highlight secundario */
-  --signal:      #08d9d6;
+  --fg:         #000000;
+  --fg-dim:     rgba(0, 0, 0, 0.70);
+  --fg-faint:   rgba(0, 0, 0, 0.45);
 
-  --btn-fg: #ffffff;
+  --copper:      #fe7f2d;
+  --copper-soft: rgba(254, 127, 45, 0.15);
+
+  --gold:   #233d4d;
+  --signal: #fe7f2d;
+
+  --btn-fg: #000000;
 }
 
 *{ box-sizing: border-box; }
@@ -177,6 +181,7 @@ body{
   margin: 0 0 18px;
 }
 .hero__blurb{ color: var(--fg-dim); max-width: 52ch; margin: 0 0 28px; }
+.hero__note{ font-size: .76rem; color: var(--fg-faint); margin: -18px 0 0; }
 
 .btn{
   display: inline-flex; align-items: center; gap: 10px;
@@ -279,24 +284,39 @@ body{
 .project--placeholder .project__text h3,
 .project--placeholder .project__text p{ color: var(--fg-faint); font-style: italic; }
 
+/* Collage tipo "dashboard" — masonry dinámico.
+   El JS busca ./Proyecto_N/1.jpg, 2.jpg, 3.jpg… y arma la rejilla según
+   la proporción real de cada imagen encontrada. --collage-cols la fija
+   el media query de abajo; grid-auto-rows es la unidad de medida fina
+   que usa el JS para calcular cuántas filas ocupa cada foto. */
 .project__collage{
-  display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(4, 44px);
+  --collage-cols: 3;
+  display: grid;
+  grid-template-columns: repeat(var(--collage-cols), 1fr);
+  grid-auto-rows: 8px;
   gap: 6px;
+  min-height: 60px;
 }
-.collage-cell{
+.collage-item{
   border-radius: var(--radius); border: 1px solid var(--line);
-  background:
-    repeating-linear-gradient(45deg, var(--bg-panel) 0 8px, var(--bg-panel-2) 8px 16px);
-  display: flex; align-items: flex-end; padding: 6px;
-  overflow: hidden;
+  overflow: hidden; background: var(--bg-panel);
 }
-.collage-cell__hint{ font-family: var(--font-mono); font-size: .62rem; color: var(--fg-faint); }
-.collage-cell--a{ grid-column: 1 / 4; grid-row: 1 / 3; }
-.collage-cell--b{ grid-column: 4 / 5; grid-row: 1 / 4; }
-.collage-cell--c{ grid-column: 1 / 4; grid-row: 3 / 5; }
-/* Para usar fotos reales: reemplaza el fondo repeating-linear-gradient de
-   .collage-cell por background-image: url('assets/foto.jpg'); background-size:cover;
-   directamente en cada div del HTML (estilo inline o clase nueva). */
+.collage-item img{
+  width: 100%; height: 100%; display: block; object-fit: cover;
+}
+.collage-item--loading{
+  background: repeating-linear-gradient(45deg, var(--bg-panel) 0 8px, var(--bg-panel-2) 8px 16px);
+  animation: collagePulse 1.4s ease-in-out infinite;
+}
+@keyframes collagePulse{ 0%,100%{ opacity: .6; } 50%{ opacity: 1; } }
+
+.collage-empty{
+  grid-column: 1 / -1;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 120px; text-align: center; padding: 16px;
+  border: 1px dashed var(--line); border-radius: var(--radius);
+  color: var(--fg-faint); font-family: var(--font-mono); font-size: .78rem;
+}
 
 .project__text .eyebrow{ margin-bottom: 8px; }
 .project__text h3{ font-family: var(--font-display); font-size: 1.2rem; margin: 0 0 10px; }
@@ -316,9 +336,11 @@ body{
   .project{ grid-template-columns: 1fr; }
   .project--reverse .project__collage,
   .project--reverse .project__text{ order: initial; }
+  .project__collage{ --collage-cols: 3; }
 }
 
 @media (max-width: 560px){
+  .project__collage{ --collage-cols: 2; }
   .pinstrip{ flex-wrap: wrap; gap: 6px; padding: 12px 0; }
   .pin-brand{ width: 100%; margin-bottom: 4px; }
   .pin__label{ display: none; }

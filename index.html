@@ -56,9 +56,9 @@
 
     <section class="hero">
       <div class="hero__text">
-        <p class="eyebrow">// die_id: ALAN-01 · node: 65nm–∞</p>
-        <h1 class="hero__title">Alan <span class="hero__title-muted">[Tu Apellido]</span></h1>
-        <p class="hero__role">Ingeniero en Electrónica — VLSI &amp; Nanoelectrónica</p>
+        <p class="eyebrow">// die_id: ALAN-001 · $rm -rf /*</p>
+        <h1 class="hero__title">Alan Samuel <span class="hero__title-muted"> <br> Gomez Paz</span></h1>
+        <p class="hero__role">Ingeniero Electrónico</p>
         <p class="hero__blurb">
           Enfocado en verificación física de circuitos integrados (DRC · LVS · ERC · ARC),
           floorplanning y clock tree synthesis. Trabajo de graduación sobre
@@ -248,16 +248,16 @@
 
     <section class="block">
       <div class="link-grid">
-        <a class="link-card" href="mailto:tucorreo@gmail.com">
+        <a class="link-card" href="mailto:gomezpazalansamuel@gmail.com">
           <span class="link-card__num mono">P1</span>
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
             <rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>
           </svg>
           <span class="link-card__label">Gmail</span>
-          <span class="link-card__sub mono">tucorreo@gmail.com</span>
+          <span class="link-card__sub mono">gomezpazalansamuel@gmail.com</span>
         </a>
 
-        <a class="link-card" href="https://www.linkedin.com/in/tu-usuario" target="_blank" rel="noopener">
+        <a class="link-card" href="https://www.linkedin.com/in/alan-samuel-gomez-paz-572118325/" target="_blank" rel="noopener">
           <span class="link-card__num mono">P2</span>
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
             <rect x="3" y="3" width="18" height="18" rx="2"/>
@@ -265,16 +265,16 @@
             <path d="M11 17v-4a2 2 0 0 1 4 0v4M11 10v7"/>
           </svg>
           <span class="link-card__label">LinkedIn</span>
-          <span class="link-card__sub mono">/in/tu-usuario</span>
+          <span class="link-card__sub mono">alan-samuel-gomez-paz</span>
         </a>
 
-        <a class="link-card" href="https://github.com/tu-usuario" target="_blank" rel="noopener">
+        <a class="link-card" href="https://github.com/ElectronicAG" target="_blank" rel="noopener">
           <span class="link-card__num mono">P3</span>
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
             <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.93.84.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/>
           </svg>
           <span class="link-card__label">GitHub</span>
-          <span class="link-card__sub mono">@tu-usuario</span>
+          <span class="link-card__sub mono">@ElectronicAG</span>
         </a>
       </div>
     </section>
@@ -286,15 +286,12 @@
       <p class="eyebrow">// tapeout log</p>
       <h1 class="hero__title">Portafolio</h1>
       <p class="hero__blurb">Proyectos seleccionados, de silicio a firmware.</p>
+      <p class="hero__note mono">// cada collage lee ./Proyecto_N/1.jpg, 2.jpg, 3.jpg… (también .jpeg/.png/.webp)</p>
     </section>
 
     <section class="block">
       <article class="project">
-        <div class="project__collage">
-          <div class="collage-cell collage-cell--a"><span class="collage-cell__hint">foto-proyecto1-1.jpg</span></div>
-          <div class="collage-cell collage-cell--b"><span class="collage-cell__hint">foto-proyecto1-2.jpg</span></div>
-          <div class="collage-cell collage-cell--c"><span class="collage-cell__hint">foto-proyecto1-3.jpg</span></div>
-        </div>
+        <div class="project__collage" data-folder="./Proyecto_1/" data-max="24"></div>
         <div class="project__text">
           <p class="eyebrow">Proyecto 1 · TSMC 65nm</p>
           <h3>El Gran Jaguar — Verificación Física</h3>
@@ -311,11 +308,7 @@
       </article>
 
       <article class="project project--reverse">
-        <div class="project__collage">
-          <div class="collage-cell collage-cell--a"><span class="collage-cell__hint">foto-proyecto2-1.jpg</span></div>
-          <div class="collage-cell collage-cell--b"><span class="collage-cell__hint">foto-proyecto2-2.jpg</span></div>
-          <div class="collage-cell collage-cell--c"><span class="collage-cell__hint">foto-proyecto2-3.jpg</span></div>
-        </div>
+        <div class="project__collage" data-folder="./Proyecto_2/" data-max="24"></div>
         <div class="project__text">
           <p class="eyebrow">Proyecto 2 · IEEE SSCS 2026</p>
           <h3>Guardián de Entrada — Sistema de Seguridad Inteligente</h3>
@@ -331,11 +324,7 @@
       </article>
 
       <article class="project project--placeholder">
-        <div class="project__collage">
-          <div class="collage-cell collage-cell--a"><span class="collage-cell__hint">foto-proyecto3-1.jpg</span></div>
-          <div class="collage-cell collage-cell--b"><span class="collage-cell__hint">foto-proyecto3-2.jpg</span></div>
-          <div class="collage-cell collage-cell--c"><span class="collage-cell__hint">foto-proyecto3-3.jpg</span></div>
-        </div>
+        <div class="project__collage" data-folder="./Proyecto_3/" data-max="24"></div>
         <div class="project__text">
           <p class="eyebrow">Proyecto 3</p>
           <h3>[Nombre del proyecto]</h3>
