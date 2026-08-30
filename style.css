@@ -35,24 +35,25 @@
 
 /* ---------- modo light ---------- */
 [data-theme="light"] {
-  --bg:         #eaecf0;
-  --bg-panel:   #ffffff;
-  --bg-panel-2: rgba(35, 61, 77, 0.07);
+  --bg:          #dadbbd;
 
-  --line:       rgba(35, 61, 77, 0.22);
-  --line-soft:  rgba(35, 61, 77, 0.10);
+  --bg-panel:    rgba(255, 255, 255, 0.55);
+  --bg-panel-2:  rgba(21, 29, 59, 0.07);
 
-  --fg:         #000000;
-  --fg-dim:     rgba(0, 0, 0, 0.70);
-  --fg-faint:   rgba(0, 0, 0, 0.45);
+  --line:        rgba(21, 29, 59, 0.22);
+  --line-soft:   rgba(21, 29, 59, 0.10);
 
-  --copper:      #fe7f2d;
-  --copper-soft: rgba(254, 127, 45, 0.15);
+  --fg:          #151d3b;
+  --fg-dim:      rgba(21, 29, 59, 0.75);
+  --fg-faint:    rgba(21, 29, 59, 0.48);
 
-  --gold:   #233d4d;
-  --signal: #fe7f2d;
+  --copper:      #d82148;
+  --copper-soft: rgba(216, 33, 72, 0.15);
 
-  --btn-fg: #000000;
+  --gold:        #151d3b;
+  --signal:      #6ebf8b;
+
+  --btn-fg:      #dadbbd;
 }
 
 *{ box-sizing: border-box; }
@@ -272,6 +273,15 @@ body{
 .link-card svg{ color: var(--copper); }
 .link-card__label{ font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; }
 .link-card__sub{ color: var(--fg-dim); font-size: .82rem; }
+
+button.link-card {
+  width: 100%;
+  border: inherit;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  cursor: pointer;
+}
 
 /* ---------- portafolio ---------- */
 .project{
