@@ -139,10 +139,21 @@ initAllCollages();
 // Filtros de portafolio (se generan solos leyendo data-tags)
 // ================================================================
 const TAG_LABELS = {
-  cpp: "C++", pcb: "PCB", autodesk: "Autodesk", arduino: "Arduino",
-  bluetooth: "Bluetooth", electronics: "Electronics", python: "Python",
-  flask: "Flask", docker: "Docker", web: "Web", security: "Security",
-  api: "API", networking: "Networking", research: "Research",
+  cpp: "C++",
+  pcb: "PCB",
+  autodesk: "Autodesk",
+  arduino: "Arduino",
+  bluetooth: "Bluetooth",
+  electronics: "Electronics",
+  python: "Python",
+  flask: "Flask",
+  docker: "Docker",
+  web: "Web",
+  security: "Security",
+  cryptography: "Cryptography",
+  api: "API",
+  networking: "Networking",
+  research: "Research",
 };
 
 function labelFor(tag){
