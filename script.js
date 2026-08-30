@@ -135,6 +135,60 @@ window.addEventListener("resize", () => {
 
 initAllCollages();
 
+// ================================================================
+// Filtros de portafolio (se generan solos leyendo data-tags)
+// ================================================================
+const TAG_LABELS = {
+  cpp: "C++", pcb: "PCB", autodesk: "Autodesk", arduino: "Arduino",
+  bluetooth: "Bluetooth", electronics: "Electronics", python: "Python",
+  flask: "Flask", docker: "Docker", web: "Web", security: "Security",
+  api: "API", networking: "Networking", research: "Research",
+};
+
+function labelFor(tag){
+  return TAG_LABELS[tag] || tag.charAt(0).toUpperCase() + tag.slice(1);
+}
+
+function initPortfolioFilters(){
+  const bar = document.getElementById("portfolioFilters");
+  const projects = document.querySelectorAll("#portafolio .project[data-tags]");
+  if (!bar || projects.length === 0) return;
+
+  // recolecta todas las etiquetas únicas presentes en los proyectos
+  const tags = new Set();
+  projects.forEach(p => p.dataset.tags.trim().split(/\s+/).forEach(t => tags.add(t)));
+  if (tags.size === 0) return;
+
+  const makePill = (tag, label, active) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "filter-pill" + (active ? " is-active" : "");
+    btn.dataset.tag = tag;
+    btn.textContent = label;
+    return btn;
+  };
+
+  bar.appendChild(makePill("all", "All", true));
+  [...tags].sort().forEach(tag => bar.appendChild(makePill(tag, labelFor(tag), false)));
+
+  bar.addEventListener("click", e => {
+    const btn = e.target.closest(".filter-pill");
+    if (!btn) return;
+
+    bar.querySelectorAll(".filter-pill").forEach(p => p.classList.remove("is-active"));
+    btn.classList.add("is-active");
+
+    const selected = btn.dataset.tag;
+    projects.forEach(project => {
+      const projectTags = project.dataset.tags.trim().split(/\s+/);
+      const show = selected === "all" || projectTags.includes(selected);
+      project.classList.toggle("project--filtered-out", !show);
+    });
+  });
+}
+
+initPortfolioFilters();
+
 // Toggle modo light / dark
 const themeToggle = document.getElementById("themeToggle");
 const root = document.documentElement;

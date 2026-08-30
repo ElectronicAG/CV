@@ -61,7 +61,6 @@
         <p class="hero__role">Electronics Engineer</p>
         <p class="hero__blurb">
           I’m an Electronics Engineer from Universidad del Valle de Guatemala with a passion for software development and technology. I enjoy programming in C++, Rust, and Python, with a particular interest in graphics programming using technologies such as OpenGL and Vulkan. I’m also interested in cybersecurity, Linux, and Bash scripting. My preferred Linux distributions are Ubuntu and Fedora, especially with the KDE Plasma desktop environment.
-
         </p>
         <a class="btn btn--primary" href="./CV.pdf" download>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -321,12 +320,14 @@
     <section class="hero hero--compact">
       <p class="eyebrow">// tapeout log</p>
       <h1 class="hero__title">Portafolio</h1>
-      <!-- <p class="hero__blurb">Proyectos seleccionados, de silicio a firmware.</p>
-      <p class="hero__note mono">// cada collage lee ./Proyecto_N/1.jpg, 2.jpg, 3.jpg… (también .jpeg/.png/.webp)</p> -->
     </section>
 
     <section class="block">
-      <article class="project">
+
+      <!-- filtros: se generan solos leyendo data-tags de cada .project -->
+      <div class="portfolio-filters" id="portfolioFilters" role="group" aria-label="Filtrar proyectos por tecnología"></div>
+
+      <article class="project" data-tags="arduino cpp pcb autodesk bluetooth electronics">
         <div
           class="project__collage"
           data-folder="./Proyecto_1/"
@@ -366,9 +367,8 @@
           </a>
         </div>
       </article>
-      
-      <article class="project project--text-only">
-       <div class="project__2">
+
+      <article class="project project--text-only" data-tags="python flask docker networking web">
         <div class="project__text">
           <p class="eyebrow">Project 2 · Claro Guatemala</p>
 
@@ -399,7 +399,7 @@
         </div>
       </article>
 
-      <article class="project project--text-only">
+      <article class="project project--text-only" data-tags="python api research">
         <div class="project__2">
           <p class="eyebrow">Claro Project 2 · API Research</p>
 
@@ -428,8 +428,8 @@
           </p>
         </div>
       </article>
-      
-      <article class="project project--text-only">
+
+      <article class="project project--text-only" data-tags="python flask docker security web">
         <div class="project__text">
           <p class="eyebrow">Claro Project 3 · Internal Web Tool</p>
 
