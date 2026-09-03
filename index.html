@@ -512,11 +512,15 @@
 
           <p>
             Designed and built this interactive résumé site from scratch using plain
-            HTML, CSS, and JavaScript — no frameworks. Includes a light/dark theme
+            HTML, CSS, and JavaScript — no frameworks. It includes a light/dark theme
             switcher, a dynamic masonry-style photo collage that auto-detects images
-            per project folder and adapts to their real dimensions, and a portfolio
-            filter system that generates its tag buttons automatically from each
-            project's metadata.
+            in each project folder and adapts to their real dimensions, and a portfolio
+            filter system that automatically generates tag buttons from each project's
+            metadata. Deployed the site through both GitHub Pages and AWS using Amazon
+            S3 with CloudFront. Configured the S3 bucket's IAM and bucket policies to
+            allow visitors to download and view the site's pages and images. CloudFront
+            was used instead of serving the site directly from S3 to resolve CORS-related
+            issues that affected access on mobile devices.
           </p>
 
           <ul class="chip-list">
